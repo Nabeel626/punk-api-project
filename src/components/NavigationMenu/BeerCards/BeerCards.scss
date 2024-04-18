@@ -1,0 +1,22 @@
+
+.beer-cards {
+    position: relative;
+    background-color: transparent;
+    z-index: 1;
+
+    .beerCard__container {
+        border: 2px solid black;
+        display: grid;
+        box-shadow: #7f8791 8px 10px ;
+        background-color: transparent;
+        border-radius: 10px;
+        height: auto;
+        gap: 20px;
+        margin: 50px;
+        padding: 30px;
+
+        .beerCard__name, .beerCard__role, p {
+            background-color:  transparent;
+        }
+    }
+}
