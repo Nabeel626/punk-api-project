@@ -1,5 +1,5 @@
-import React, { FormEventHandler } from 'react'
-
+import { FormEventHandler } from 'react'
+import "./SearchBox.scss";
 
 type SearchBoxProps = {
     label: string;

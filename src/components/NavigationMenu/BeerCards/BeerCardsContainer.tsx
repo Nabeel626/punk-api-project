@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import SearchBox from '../SearchBox/SearchBox'
 import BeerCards from './BeerCards';
 import { Beer } from '../../../Data/types';
@@ -19,7 +19,6 @@ const BeerCardsContainer = ({ beers } : BeerData) => {
 
     const filteredSearch = beers.filter((user) => {                       
         return user.name.toLowerCase().includes(searchTerm);
-        
     });
 
     return (
@@ -27,7 +26,7 @@ const BeerCardsContainer = ({ beers } : BeerData) => {
             <SearchBox label="Search By Beer Name" searchTerm={searchTerm} handleInput={handleInput} />
         
             {filteredSearch.map((beer) => {
-                return <BeerCards key={beer.id} name={beer.name} beers={beers} desciption={beer.description} /> //This will map out the employee card so that it can return it
+                return <BeerCards key={beer.id} image={beer.image_url} name={beer.name} tagline={beer.tagline} beers={beers} desciption={beer.description} /> //This will map out the employee card so that it can return it
             })}
         
         </>

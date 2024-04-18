@@ -1,4 +1,16 @@
 .search-box {
+    margin: 30px;
+    text-align: center;
 
+    .search-box__label {
+        font-weight: bold;
+    }
 
+    .search-box__input {
+        border: 2px solid black;
+        border-radius: 20px;
+        font-size: 15px;
+        padding: 5px 13px;
+        box-shadow: #7f8791 6px 8px ;
+    }
 }
