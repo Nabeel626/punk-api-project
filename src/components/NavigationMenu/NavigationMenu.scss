@@ -1,0 +1,30 @@
+.navigationBar {
+    background-color: #424d5a;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+
+    ul {
+        background-color: #424d5a;
+        list-style-type: none;
+        margin: 0;
+    }
+
+    li {
+        display: inline;
+        background-color: #424d5a;
+        font-size: 17px;
+        font-weight: bold;
+        padding: 20px;
+    } 
+
+    .navigationBar__Logo {
+        float: left;
+    }
+    
+    .navigationBar__Homepage, .navigationBar__Beerpage {
+        float: right;
+        cursor: pointer;
+    } 
+}

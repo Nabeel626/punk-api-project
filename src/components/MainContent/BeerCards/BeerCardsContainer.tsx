@@ -26,7 +26,9 @@ const BeerCardsContainer = ({ beers } : BeerData) => {
             <SearchBox label="Search By Beer Name" searchTerm={searchTerm} handleInput={handleInput} />
         
             {filteredSearch.map((beer) => {
-                return <BeerCards key={beer.id} image={beer.image_url} name={beer.name} tagline={beer.tagline} beers={beers} desciption={beer.description} /> //This will map out the employee card so that it can return it
+                return <BeerCards key={beer.id} image={beer.image_url} 
+                name={beer.name} tagline={beer.tagline} beers={beers} 
+                desciption={beer.description} /> //This will map out the employee card so that it can return it
             })}
         
         </>
