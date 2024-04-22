@@ -1,9 +1,10 @@
 
 .beer-cards {
     position: relative;
-    top: 3em;
+    top: 4em;
     background-color: transparent;
     z-index: 1;
+    padding-bottom: 17px;
 
     .beerCard__container {
         border: 2px solid black;
