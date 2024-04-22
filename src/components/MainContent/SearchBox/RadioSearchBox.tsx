@@ -18,8 +18,8 @@ const RadioSearchBox = ({selected, onChange} : RadioInputProps) => {
             <input id="classicRange" type='checkbox' checked={selected} onChange={onChange}/>
             <label htmlFor="classicRange">Classic Range</label><br />
 
-            <input id="acidity" type='checkbox' checked={selected} onChange={onChange}/>
-            <label htmlFor="acidity">Acidic (ph &lt; 4)</label>
+            {/* <input id="acidity" type='checkbox' checked={selected} onChange={onChange}/>
+            <label htmlFor="acidity">Acidic (ph &lt; 4)</label> */}
 
         </div>
     )
