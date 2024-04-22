@@ -2,29 +2,74 @@
     background-color: #424d5a;
     position: fixed;
     top: 0;
+    height: auto;
     width: 100%;
     z-index: 2;
 
     ul {
         background-color: #424d5a;
         list-style-type: none;
-        margin: 0;
-    }
+        text-decoration: none;
 
-    li {
-        display: inline;
-        background-color: #424d5a;
-        font-size: 17px;
-        font-weight: bold;
-        padding: 20px;
-    } 
+        li {
+            display: inline;
+            background-color: #424d5a;
+            font-size: 17px;
+            font-weight: bold;
+            margin: 5px;
+            text-decoration: none;
+        } 
 
-    .navigationBar__Logo {
-        float: left;
+        .navigationBar__Logo {
+            float: left;
+            padding: 20px;
+        }
+
+        a {
+            float: right;
+            background-color: #424d5a;
+            position: relative;
+            top: 0.6em;
+            right: 0.6em;
+            padding: 15px;
+            text-decoration: none;
+        }
+
+        a::before,
+        a::after {
+            content: '';
+            height: 14px;
+            width: 14px;    
+            position: absolute;
+            text-decoration: none;
+            transition: all .35s ease;
+            opacity: 0;
+        }
+
+        a::before {
+            content: '';
+            right: 0;
+            top: 0;
+            border-top: 3px solid white;
+            text-decoration: none;
+            border-right: 3px solid white;
+            transform: translate(-50%, 100%);
+        }
+
+        a:after {
+            content: '';
+            left: 0;
+            bottom: 0;
+            border-bottom: 3px solid white;
+            border-left: 3px solid white;
+            transform: translate(100%, -50%)
+        }
+
+        a:hover:before,
+        a:hover:after{
+            transform: translate(0,0);
+            opacity: 1;
+        }
     }
     
-    .navigationBar__Homepage, .navigationBar__Beerpage {
-        float: right;
-        cursor: pointer;
-    } 
 }
