@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import SearchBox from '../SearchBox/SearchBox'
 import BeerCards from './BeerCards';
 import { Beer } from '../../../Data/types';
