@@ -9,26 +9,22 @@ import RadioSearchBox from './components/MainContent/SearchBox/RadioSearchBox';
 
 function App() {
 
-  let url = `http://localhost:3333/v2/beers/?`;   
+  let url = `http://localhost:3333/v2/beers/?`;
 
   const [checkBeers, setCheckBeers] = useState<Beer[]>([]);
-  const [checkABVBoolean, setABVCheckBoolean] = useState<boolean>(false);
-  const [checkRangeBoolean, setCheckRangeBoolean] = useState<boolean>(false);
 
-  const getUsers = async (checkABVBoolean: boolean, checkRangeBoolean: boolean) => {   
+  let [checkABV, setCheckABV] = useState<boolean>(false);
+  let [checkRange, setCheckRange] = useState<boolean>(false);
+  let [checkAcidity, setCheckAcidity] = useState<boolean>(false);
 
-    if(checkABVBoolean === true) {
-      url += `&abv_gt=6`;
-      console.log(url);
-    } else {
-      console.log("NOTHING");
-    }
+  const getUsers = async (checkABV: boolean, checkRange: boolean) => {   
 
-    if(checkRangeBoolean === true) {
-      url += `&brewed_before=2010`;
-      console.log(url);
-    } else {
-      console.log("NOTHING");
+    if(checkABV === true && checkRange === false) {
+      url += `abv_gt=6`;
+    } 
+    
+    if (checkRange === true && checkABV === false) {
+      url += `&brewed_before=12-2009`;
     }
 
     const res = await fetch(url);
@@ -38,33 +34,55 @@ function App() {
   };
 
   useEffect(() => {
-    getUsers(checkABVBoolean, checkRangeBoolean);
-  },[checkABVBoolean, checkRangeBoolean]);
+    getUsers(checkABV, checkRange);
+  },[checkABV, checkRange]);
 
-  const onChangeRadio = (event : ChangeEvent<HTMLInputElement>) => {
-    let radioCheck = Boolean(event.currentTarget.value);
-    let radioCheck2 = Boolean(event.currentTarget.value);
+  const onChangeABV = (event : ChangeEvent<HTMLInputElement>) => {    
+    let radioCheck = event.currentTarget.checked;
     
-    if(checkABVBoolean === true) {
-        radioCheck = false;
-        radioCheck2 = true;     
-
-    } else if(checkRangeBoolean === true) {
-        radioCheck = true;
-        radioCheck2 = false; 
-
+    if(radioCheck === true) {
+      checkABV = true;
+      console.log(checkABV);
+      
     } else {
-        radioCheck = true;
-        radioCheck2 = true; 
+      checkABV = false;
+      console.log(checkABV);
     }
     
-    setCheckRangeBoolean(radioCheck2)
-    setABVCheckBoolean(radioCheck);
-    console.log(checkABVBoolean);
-    console.log(checkRangeBoolean);
-    
+      setCheckABV(radioCheck);
   }
 
+  
+  const onChangeRange = (event : ChangeEvent<HTMLInputElement>) => {    
+    let radioCheck = event.currentTarget.checked;
+    
+    if(radioCheck === true) {
+      checkRange = true;
+      console.log(checkRange);
+      
+    } else {
+      checkRange = false;
+      console.log(checkRange);
+    }
+    
+    setCheckRange(radioCheck);
+  }
+
+  
+  const onChangeAcidity = (event : ChangeEvent<HTMLInputElement>) => {    
+    let radioCheck = event.currentTarget.checked;
+    
+    if(radioCheck === true) {
+      checkAcidity = true;
+      console.log(checkAcidity);
+      
+    } else {
+      checkAcidity = false;
+      console.log(checkAcidity);
+    }
+    
+    setCheckAcidity(radioCheck);
+  }
 
   return (
     <>
@@ -80,7 +98,9 @@ function App() {
 
           <Route path='/beers' element={
             <section className='beer-cards'>
-              <RadioSearchBox selected={checkABVBoolean || checkRangeBoolean} onChange={onChangeRadio} />
+              <RadioSearchBox  onChange={onChangeABV} label={'High ABV (> 6%)'} selected={checkABV} />
+              <RadioSearchBox  onChange={onChangeRange} label={'Classic Range'} selected={checkRange}/>
+              <RadioSearchBox  onChange={onChangeAcidity} label={'Avidic pH (< 4)'} selected={checkAcidity}/>
               <BeerCardsContainer beers={checkBeers} />
             </section>} 
           />
