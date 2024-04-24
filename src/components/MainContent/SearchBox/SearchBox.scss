@@ -3,21 +3,21 @@
     padding: 20px;
     padding-bottom: 120px;
     border-radius: 20px;
-    box-shadow: #7f8791 8px 10px;
-    background-color: transparent;
+    box-shadow: #ccccff 8px 10px;
+    background: transparent;
     border: 2px solid black;
 
     .search-box__heading {
         padding-bottom: 20px;
         text-align: center;
-        background-color: transparent;
+        background: transparent;
     }
 
     .search-box__label {
         font-weight: bold;
         position: relative;
         left: 1.5em;
-        background-color: transparent;
+        background: transparent;
     }
 
     .search-box__input {
@@ -28,7 +28,7 @@
         font-size: 15px;
         padding: 5px 13px;
         width: 45%;
-        box-shadow: #7f8791 6px 8px ;
+        box-shadow: #ccccff 6px 8px ;
     }
 }
 

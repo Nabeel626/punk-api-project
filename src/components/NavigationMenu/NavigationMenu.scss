@@ -1,19 +1,19 @@
 .navigationBar {
-    background-color: #424d5a;
+    background:  #ccccff;
     position: fixed;
     top: 0;
     height: auto;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
 
     ul {
-        background-color: #424d5a;
+        background:  #ccccff;
         list-style-type: none;
         text-decoration: none;
 
         li {
             display: inline;
-            background-color: #424d5a;
+            background:  #ccccff;
             font-size: 17px;
             font-weight: bold;
             margin: 5px;
@@ -27,7 +27,7 @@
 
         a {
             float: right;
-            background-color: #424d5a;
+            background:  #ccccff;
             position: relative;
             top: 0.6em;
             right: 0.6em;
@@ -50,9 +50,9 @@
             content: '';
             right: 0;
             top: 0;
-            border-top: 3px solid white;
+            border-top: 3px solid black;
             text-decoration: none;
-            border-right: 3px solid white;
+            border-right: 3px solid black;
             transform: translate(-50%, 100%);
         }
 
@@ -60,8 +60,8 @@
             content: '';
             left: 0;
             bottom: 0;
-            border-bottom: 3px solid white;
-            border-left: 3px solid white;
+            border-bottom: 3px solid black;
+            border-left: 3px solid black;
             transform: translate(100%, -50%)
         }
 
