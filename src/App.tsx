@@ -9,33 +9,53 @@ import RadioSearchBox from './components/MainContent/SearchBox/RadioSearchBox';
 
 function App() {
 
-  let url = `http://localhost:3333/v2/beers/?`;
+  let url = `http://localhost:3333/v2/beers/?&per_page=80`;
 
   const [checkBeers, setCheckBeers] = useState<Beer[]>([]);
 
   let [checkABV, setCheckABV] = useState<boolean>(false);
   let [checkRange, setCheckRange] = useState<boolean>(false);
   let [checkAcidity, setCheckAcidity] = useState<boolean>(false);
+  let [checkAll, setCheckAll] = useState<boolean>(true);
 
-  const getUsers = async (checkABV: boolean, checkRange: boolean) => {   
+  const getUsers = async (checkABV: boolean, checkRange: boolean, checkAcidity: boolean, checkAll: boolean) => {   
 
-    if(checkABV === true && checkRange === false) {
-      url += `abv_gt=6`;
-    } 
-    
-    if (checkRange === true && checkABV === false) {
-      url += `&brewed_before=12-2009`;
+    if(checkAll) {
+
+      if(checkABV) {
+        url +=  `&abv_gt=6`;
+      }
+  
+      if (checkRange) {
+        url += `&brewed_before=12-2009`;
+      } 
+  
+      const res = await fetch(url);
+      const data: Beer[] = await res.json();
+  
+      if(checkAcidity) {
+        
+        const filteredsearch = data.filter((user) => {
+  
+          if(user.ph < 4) {
+            return user.ph;
+          }
+        });
+  
+        setCheckBeers(filteredsearch);
+      } else {  
+        setCheckBeers(data);
+      }
+
+    } else {
+      setCheckBeers([]);
     }
 
-    const res = await fetch(url);
-    const data: Beer[] = await res.json();
-
-    setCheckBeers(data);
   };
 
   useEffect(() => {
-    getUsers(checkABV, checkRange);
-  },[checkABV, checkRange]);
+    getUsers(checkABV, checkRange, checkAcidity, checkAll);
+  },[checkABV, checkRange, checkAcidity, checkAll]);
 
   const onChangeABV = (event : ChangeEvent<HTMLInputElement>) => {    
     let radioCheck = event.currentTarget.checked;
@@ -84,6 +104,21 @@ function App() {
     setCheckAcidity(radioCheck);
   }
 
+  const onChangeAll = (event : ChangeEvent<HTMLInputElement>) => {    
+    let radioCheck = event.currentTarget.checked;
+    
+    if(radioCheck === true) {
+      checkAll = true;
+      console.log(checkAll);
+      
+    } else {
+      checkAll = false;
+      console.log(checkAll);
+    }
+    
+    setCheckAll(radioCheck);
+  }
+
   return (
     <>
       <BrowserRouter>
@@ -97,13 +132,17 @@ function App() {
           <Route path='/' element={<Home />} />
 
           <Route path='/beers' element={
+            
+            <><section className='checkbox__filter'>
+              <RadioSearchBox onChange={onChangeABV} label={'High ABV (> 6%)'} selected={checkABV} />
+              <RadioSearchBox onChange={onChangeRange} label={'Classic Range'} selected={checkRange} />
+              <RadioSearchBox onChange={onChangeAcidity} label={'Acidic pH (< 4)'} selected={checkAcidity} />
+              <RadioSearchBox onChange={onChangeAll} label={'Select All'} selected={checkAll} />
+            </section>
+
             <section className='beer-cards'>
-              <RadioSearchBox  onChange={onChangeABV} label={'High ABV (> 6%)'} selected={checkABV} />
-              <RadioSearchBox  onChange={onChangeRange} label={'Classic Range'} selected={checkRange}/>
-              <RadioSearchBox  onChange={onChangeAcidity} label={'Avidic pH (< 4)'} selected={checkAcidity}/>
-              <BeerCardsContainer beers={checkBeers} />
-            </section>} 
-          />
+                <BeerCardsContainer beers={checkBeers} />
+            </section></>} />
 
         </Routes>
 

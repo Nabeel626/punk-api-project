@@ -25,7 +25,7 @@ const BeerCardsContainer = ({ beers } : BeerData) => {
 
     return (
         <>
-            <SearchBox label="Search By Beer Name" searchTerm={searchTerm} handleInput={handleInput} />
+            <SearchBox label="Search Beer Name" searchTerm={searchTerm} handleInput={handleInput} />
 
             {filteredSearch.map((beer) => {
                 return <BeerCards key={beer.id} image={beer.image_url} 

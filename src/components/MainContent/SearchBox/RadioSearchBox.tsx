@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler } from "react";
 import "./SearchBox.scss";
 
 type RadioInputProps = {
@@ -11,12 +11,12 @@ type RadioInputProps = {
 const RadioSearchBox = ({ label, selected, onChange } : RadioInputProps ) => {
 
     return (
-        <div className='search-box__filter'>
 
-            <input type='checkbox' onChange={onChange} checked={selected}/>
-            <label htmlFor="">{label}</label><br />
-
+        <div className="checkbox__filter--output">
+            <input type='checkbox' onChange={onChange} checked={selected} className="checkbox__filter--input" />
+            <label htmlFor="" className="checkbox__filter--label">{label}</label>
         </div>
+
     )
 }
 
