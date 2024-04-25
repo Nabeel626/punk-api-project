@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.scss'
 import BeerCardsContainer from './components/MainContent/BeerCards/BeerCardsContainer';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
