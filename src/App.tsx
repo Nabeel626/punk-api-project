@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './App.scss'
 import BeerCardsContainer from './components/MainContent/BeerCards/BeerCardsContainer';
 import NavigationMenu from './components/NavigationMenu/NavigationMenu';
@@ -7,6 +7,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { Beer } from './Data/types';
 import RadioSearchBox from './components/MainContent/SearchBox/RadioSearchBox';
 import BeerCardsInfo from './components/MainContent/BeerCards/BeerCardsInfo';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 function App() {
 
@@ -151,7 +152,7 @@ function App() {
           <div className="background__graphic background__graphic--vector2"></div>
         </section>
 
-        <section>
+        <section className='navigationMenu'>
           <NavigationMenu />
         </section>
         
@@ -161,9 +162,9 @@ function App() {
 
           <Route path='/beers' element={
             <><section className='pagination'>
-              <button className="pagination__increment" aria-label="Navigate right" onClick={handleIncrement}>PAGE UP</button>
+              <button className="pagination__decrement" aria-label="Navigate left" onClick={handleDecrement}><FaArrowLeft /></button>
               <h2 className='pagination__showPageNumber'>{"Page " + counter}</h2>
-              <button className="pagination__decrement" aria-label="Navigate left" onClick={handleDecrement}>PAGE DOWN</button>
+              <button className="pagination__increment" aria-label="Navigate right" onClick={handleIncrement}><FaArrowRight /></button>
             </section>
 
             <section className='checkbox__filter'>
@@ -174,10 +175,10 @@ function App() {
             </section>
 
             <section className='beer-cards'>
-
               <BeerCardsContainer beers={checkBeers} />
+              <button className="backToTop" aria-label="Back to Top" >BACK TO TOP</button>
             </section></>} />
-
+            
             <Route path="/beers/:beerId" element={<BeerCardsInfo beers={checkBeers} />} />
 
         </Routes>

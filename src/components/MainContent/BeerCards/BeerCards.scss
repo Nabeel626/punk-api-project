@@ -1,7 +1,8 @@
 
 .beer-cards {
     position: relative;
-    top: 1em;
+    top: 3em;
+    padding-bottom: 60px;
     background: transparent;
     z-index: 1;
     
@@ -14,36 +15,31 @@
     .beerCard__container {
         border: 2px solid black;
         display: grid;
-        grid-template-areas: 
-        "image header header"
-        "image desc desc";
-        grid-template-columns: 90px 200px;
+        text-align: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.6fr 0.1fr;
         box-shadow: #ccccff 8px 10px;
         background:transparent;
         border-radius: 10px;
-        gap: 20px;
+        gap: 50px;
         margin: 50px;
-        padding: 30px;
-        padding-bottom: 1px;
+        padding: 20px;
+        padding-bottom: 40px;
 
         .beerCard__image {
-            width: 90%;
-            height: 20vh;
-            grid-area: image;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+            height: 30vh;
         }
         
         .beerCard__name {
             font-size: 26px;
-            grid-area: header;
         }
 
         .beerCard__desc {
             font-size: 16px;
-            grid-area: desc;
-        }
-
-        .beerCard__splitter {
-            grid-area: splitter;
         }
 
         .beerCard__name, .beerCard__role, p {

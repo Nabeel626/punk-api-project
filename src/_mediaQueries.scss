@@ -34,16 +34,27 @@
     //Search Box and Cards
     .search-box {
         text-align: center;
+        position: inherit;
+        top: 0rem;
+        left: -3rem;
     }
     
     .checkbox__filter {
-        width: 100%;
+        padding-left: 190px;
     }
     
     .beer-cards {
+        position: relative;
+        top: -60rem;
+        padding-left: 100px;
+        width: 100%;
+
         .beer-cards__cardMapping {
+            position: inherit;
             display: grid;
+            grid-template-columns: 0.3fr 0.3fr 0.3fr;
         }
+        
     }
 
 
@@ -128,5 +139,16 @@
         }
     }
 
+    .pagination {
+        display: block;
+        padding-right: 50px;
+        margin-left: auto;
+        margin-right: auto;
 
+        .pagination__increment, .pagination__decrement {
+            border: none;
+            width: 10vw;
+            border-radius: 50%;
+        }
+    }
 }

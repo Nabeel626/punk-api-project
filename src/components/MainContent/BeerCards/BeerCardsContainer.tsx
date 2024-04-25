@@ -30,8 +30,7 @@ const BeerCardsContainer = ({ beers } : BeerData) => {
             <div className='beer-cards__cardMapping' key={Number(keyID)}>
                 {filteredSearch.map((beer) => {
                     return <Link to={`/beers/${beer.id}`}><BeerCards image={beer.image_url ?? "https://images.punkapi.com/v2/keg.png"} 
-                    name={beer.name} beers={beers} 
-                    desciption={beer.description} /></Link> //This will map out the beer card so that it can return it
+                    name={beer.name} beers={beers} /></Link> //This will map out the beer card so that it can return it
                 })}
             </div>        
         </>
