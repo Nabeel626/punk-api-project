@@ -1,0 +1,132 @@
+
+@media screen and (min-width: 1020px) {
+
+    //Home
+    .welcome {
+        .welcome__heading {
+            position: relative;
+            top: 15rem;
+            left: 9rem;
+            text-align: start;
+            max-width: 40%;
+        }
+    
+        .welcome__heading--description {
+            max-width: 30%;
+            position: relative;
+            top: 19rem;
+            left: 9rem;
+            text-align: left;
+            height: auto;
+        }
+
+        .welcome__image {
+            max-width: 50vw;
+            position: relative;
+            top: -5rem;
+            left: 46vw;
+            height: auto;
+        }
+    
+    }
+
+
+    //Search Box and Cards
+    .search-box {
+        text-align: center;
+    }
+    
+    .checkbox__filter {
+        width: 100%;
+    }
+    
+    .beer-cards {
+        .beer-cards__cardMapping {
+            display: grid;
+        }
+    }
+
+
+
+    //EACH CARD INFORMATION
+    .beer-info {
+        display: grid;
+        height: auto;
+        
+        .beer-info__information {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-areas: 
+            "image header"
+            "image tagline"
+            "image desc"
+            "image tips"
+            "image info";
+            max-height: 1em;
+            
+            .beer-info__image {
+                position: relative;
+                left: 13rem;
+                width: 20vw;
+                height: 65vh;
+                grid-area: image;
+            }
+
+            .beer-info__information--heading {
+                position: relative;
+                left: -6rem;
+                grid-area: header;
+                height: auto;
+            }
+    
+            .beer-info__information--tagline {
+                position: relative;
+                left: 0.2em;
+                height: auto;
+                bottom: 29rem;
+                grid-area: tagline;
+            }
+    
+            .beer-info__information--description {
+                position: relative;
+                bottom: 27rem;
+                left: 26.5vw;
+                text-align: start;
+                width: 50%;
+                grid-area: desc;
+            }
+
+            .beer-info__information--filter1 {
+                position: relative;
+                left: 26.5vw;
+                width: 50%;
+                bottom: 25rem;
+                grid-area: tips;
+            }
+
+            .beer-info__information--filter2 {
+                position: relative;
+                bottom: 23rem;
+                left: -0.5em;
+                grid-area: info;
+                height: auto;
+            }
+
+            .beer-info__information--filter3 {
+                position: relative;
+                bottom: 23rem;
+                left: -0.6em;
+                height: auto;
+            }
+            
+            .beer-info__information--filter4 {
+                position: relative;
+                bottom: 23rem;
+                height: auto;
+            }
+
+        }
+    }
+
+
+}

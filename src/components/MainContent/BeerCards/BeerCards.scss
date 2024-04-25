@@ -4,6 +4,12 @@
     top: 1em;
     background: transparent;
     z-index: 1;
+    
+    .beer-cards__cardMapping {
+        a {
+            text-decoration: none;
+        }
+    }
 
     .beerCard__container {
         border: 2px solid black;
@@ -42,6 +48,44 @@
 
         .beerCard__name, .beerCard__role, p {
             background:  transparent;
+            text-decoration: none;
+        }
+    }
+}
+
+
+.beer-info {
+    display: grid;
+    margin: 40px;
+    padding: 20px;
+    position: relative;
+    top: 3rem;
+    grid-template-columns: 1fr;
+
+    .beer-info__image {
+        position: relative;
+        left: 7rem;
+        width: 40%;
+        height: 30vh;
+        padding-bottom: 40px;
+    }
+
+    .beer-info__information {
+        display: grid;
+        grid-template-rows: 1fr;
+
+        .beer-info__information--heading {
+            text-align: center;
+            text-decoration: underline;
+            font-size: 35px;
+        }
+
+        .beer-info__information--tagline {
+            text-align: center;
+        }
+
+        .beer-info__information--filter2, .beer-info__information--filter3, .beer-info__information--filter4 {
+            text-align: center;
         }
     }
 }

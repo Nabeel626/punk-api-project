@@ -9,7 +9,7 @@ type BeerData = {
 };
 
 const BeerCards = ({ image, name, beers, desciption } : BeerData) => {
-  
+
     beers = [];
 
     return (
@@ -17,6 +17,7 @@ const BeerCards = ({ image, name, beers, desciption } : BeerData) => {
             <img className="beerCard__image" src={image} alt="Beer Bottle"/>
             
             <h2 className="beerCard__name">{name}</h2>
+            
             <hr className="beerCard__splitter"/>
             
             <p className="beerCard__desc">{desciption} </p>

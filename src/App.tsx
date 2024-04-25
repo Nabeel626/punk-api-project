@@ -6,6 +6,7 @@ import Home from './components/MainContent/Home/Home';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { Beer } from './Data/types';
 import RadioSearchBox from './components/MainContent/SearchBox/RadioSearchBox';
+import BeerCardsInfo from './components/MainContent/BeerCards/BeerCardsInfo';
 
 function App() {
 
@@ -17,10 +18,31 @@ function App() {
   let [checkRange, setCheckRange] = useState<boolean>(false);
   let [checkAcidity, setCheckAcidity] = useState<boolean>(false);
   let [checkAll, setCheckAll] = useState<boolean>(true);
+  const [counter, setCounter] = useState<number>(1);
 
-  const getUsers = async (checkABV: boolean, checkRange: boolean, checkAcidity: boolean, checkAll: boolean) => {   
+  const handleIncrement = () => {
+      if (counter === 5 || counter > 5) {
+        setCounter(5);
+      } else {
+        setCounter(counter + 1);
+      }
+  };
+
+  const handleDecrement = () => {
+      if (counter === 1 || counter < 1) {
+          setCounter(1);
+        } else {
+          setCounter(counter - 1);
+      }
+  };
+
+  const getUsers = async (checkABV: boolean, checkRange: boolean, checkAcidity: boolean, checkAll: boolean, counter : number) => {   
 
     if(checkAll) {
+      
+      if(counter > 0 && counter <= 5) {
+        url +=  `&page=${counter}`;
+      }
 
       if(checkABV) {
         url +=  `&abv_gt=6`;
@@ -32,7 +54,7 @@ function App() {
   
       const res = await fetch(url);
       const data: Beer[] = await res.json();
-  
+      
       if(checkAcidity) {
         
         const filteredsearch = data.filter((user) => {
@@ -54,8 +76,8 @@ function App() {
   };
 
   useEffect(() => {
-    getUsers(checkABV, checkRange, checkAcidity, checkAll);
-  },[checkABV, checkRange, checkAcidity, checkAll]);
+    getUsers(checkABV, checkRange, checkAcidity, checkAll, counter);
+  },[checkABV, checkRange, checkAcidity, checkAll, counter]);
 
   const onChangeABV = (event : ChangeEvent<HTMLInputElement>) => {    
     let radioCheck = event.currentTarget.checked;
@@ -138,8 +160,13 @@ function App() {
           <Route path='/' element={<Home />} />
 
           <Route path='/beers' element={
-            
-            <><section className='checkbox__filter'>
+            <><section className='pagination'>
+              <button className="pagination__increment" aria-label="Navigate right" onClick={handleIncrement}>PAGE UP</button>
+              <h2 className='pagination__showPageNumber'>{"Page " + counter}</h2>
+              <button className="pagination__decrement" aria-label="Navigate left" onClick={handleDecrement}>PAGE DOWN</button>
+            </section>
+
+            <section className='checkbox__filter'>
               <RadioSearchBox onChange={onChangeABV} label={'High ABV (> 6%)'} selected={checkABV} />
               <RadioSearchBox onChange={onChangeRange} label={'Classic Range'} selected={checkRange} />
               <RadioSearchBox onChange={onChangeAcidity} label={'Acidic pH (< 4)'} selected={checkAcidity} />
@@ -147,13 +174,14 @@ function App() {
             </section>
 
             <section className='beer-cards'>
-                <BeerCardsContainer beers={checkBeers} />
+
+              <BeerCardsContainer beers={checkBeers} />
             </section></>} />
 
-        </Routes>
+            <Route path="/beers/:beerId" element={<BeerCardsInfo beers={checkBeers} />} />
 
+        </Routes>
       </BrowserRouter>
-      
     </>
   )
 }

@@ -35,7 +35,7 @@
 .checkbox__filter {
     position: relative;
     top: 16em;
-    left: 6.5em;
+    left: 20vw;
     gap: 20px;
     font-size: 15px;
     font-weight: bold;
@@ -43,8 +43,6 @@
     z-index: 2;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    align-items: center;
-    justify-content: center;
     width: 70%;
 
     .checkbox__filter--input {
@@ -57,9 +55,5 @@
         outline: 1px solid black;
         accent-color: black;
     }
-    
-    // input[type=checkbox] {
-    //     accent-color: red;
-    // }
-    
+        
 } 
