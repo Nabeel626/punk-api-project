@@ -1,6 +1,22 @@
-.welcome {
+.welcome__heading {
     text-align: center;
     font-size: 30px;
     position: relative;
+    top: 5em;
+}
+
+.welcome__heading--description {
+    text-align: center;
+    position: relative;
     top: 10em;
+    left: 2em;
+    width: 84%;
+    font-size: 22px;
+}
+
+.welcome__image {
+    position: relative;
+    top: 12em;
+    left: 1.5em;
+    width: 90%;
 }

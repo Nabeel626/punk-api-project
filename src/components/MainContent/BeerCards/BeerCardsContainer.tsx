@@ -29,7 +29,7 @@ const BeerCardsContainer = ({ beers } : BeerData) => {
 
             {filteredSearch.map((beer) => {
                 return <BeerCards key={beer.id} image={beer.image_url} 
-                name={beer.name} tagline={beer.tagline} beers={beers} 
+                name={beer.name} beers={beers} 
                 desciption={beer.description} /> //This will map out the beer card so that it can return it
             })}
         
