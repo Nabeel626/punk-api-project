@@ -61,11 +61,10 @@
 
     //EACH CARD INFORMATION
     .beer-info {
-        display: grid;
-        height: auto;
-        
+
         .beer-info__information {
             display: grid;
+            height: 100%;
             grid-template-rows: 1fr 1fr 1fr;
             grid-template-areas: 
             "image header"
@@ -85,7 +84,8 @@
 
             .beer-info__information--heading {
                 position: relative;
-                left: -6rem;
+                left: 0rem;
+                padding-right: 0;
                 grid-area: header;
                 height: auto;
             }
@@ -150,5 +150,12 @@
             width: 10vw;
             border-radius: 50%;
         }
+    }
+
+    .backToTop {
+        position: relative;
+        display: block;
+        margin-left: 430px;
+        margin-right: auto;
     }
 }

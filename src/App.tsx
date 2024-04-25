@@ -14,6 +14,7 @@ function App() {
   let url = `http://localhost:3333/v2/beers/?&per_page=80`;
 
   const [checkBeers, setCheckBeers] = useState<Beer[]>([]);
+  const [backToTopButton, setBackToTopButton] = useState<boolean>(false);
 
   let [checkABV, setCheckABV] = useState<boolean>(false);
   let [checkRange, setCheckRange] = useState<boolean>(false);
@@ -78,7 +79,23 @@ function App() {
 
   useEffect(() => {
     getUsers(checkABV, checkRange, checkAcidity, checkAll, counter);
+
+    window.addEventListener("scroll", () => {
+      if(window.scrollY > 100) {
+        setBackToTopButton(true);
+      } else {
+        setBackToTopButton(false);
+      }
+    });
+
   },[checkABV, checkRange, checkAcidity, checkAll, counter]);
+
+  const scrollUp = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
 
   const onChangeABV = (event : ChangeEvent<HTMLInputElement>) => {    
     let radioCheck = event.currentTarget.checked;
@@ -176,7 +193,7 @@ function App() {
 
             <section className='beer-cards'>
               <BeerCardsContainer beers={checkBeers} />
-              <button className="backToTop" aria-label="Back to Top" >BACK TO TOP</button>
+              {backToTopButton && <button className="backToTop" aria-label="Back to Top" onClick={scrollUp}>BACK TO TOP</button>}
             </section></>} />
             
             <Route path="/beers/:beerId" element={<BeerCardsInfo beers={checkBeers} />} />
