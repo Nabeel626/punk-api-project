@@ -1,11 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import SearchBox from "./SearchBox";
-import { FormEvent } from "react";
 
 
 it("can write text in the input box", () => {
 
-    render(<SearchBox label={""} searchTerm={""} handleInput={function (event: FormEvent<HTMLInputElement>): void {
+    render(<SearchBox label={""} searchTerm={""} handleInput={function () {
         throw new Error("Function not implemented.");
     } }/>);
 
