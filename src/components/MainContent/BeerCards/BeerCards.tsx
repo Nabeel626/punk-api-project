@@ -10,6 +10,8 @@ type BeerData = {
 const BeerCards = ({ image, name, beers} : BeerData) => {
 
     beers = [];
+    console.log(beers);
+    
 
     return (
         <div className="beerCard__container">

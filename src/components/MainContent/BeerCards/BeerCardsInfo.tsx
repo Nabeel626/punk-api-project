@@ -18,7 +18,7 @@ const BeerCardsInfo = ({ beers } : BeerData) => {
             <div className="beer-info__information">
                 
                 <div className="beer-info__images">
-                    <img src={beer?.image_url ?? undefined} alt={beer?.name} className="beer-info__image"/>
+                    <img src={beer?.image_url ?? "https://images.punkapi.com/v2/keg.png"} alt={beer?.name} className="beer-info__image"/>
                 </div>
 
                 <h2 className="beer-info__information--heading">{beer?.name}</h2><br/>
