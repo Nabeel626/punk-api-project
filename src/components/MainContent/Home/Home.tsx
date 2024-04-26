@@ -2,7 +2,7 @@ import "./Home.scss";
 
 const Home = () => {
   
-  const beerimage = new URL("./src/assets/beerImage/png", import.meta.url).href;
+  const beerimage = new URL("../../../assets/beerImage.png", import.meta.url).href;
   
   return (
     <div className="welcome">
