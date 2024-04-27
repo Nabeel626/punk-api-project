@@ -11,8 +11,8 @@ const NavigationMenu = () => {
                 <ul>
                     <li className="navigationBar__Logo"><RiBeerFill /> BEER BREWERY <RiBeerFill /> </li>
 
-                    <Link to={"/beers"}><li className="navigationBar__Beerpage">BEERS</li></Link>
-                    <Link to={"/"}><li className="navigationBar__Homepage">HOME</li></Link>
+                    <Link to={"/punk-api-project/beers"}><li className="navigationBar__Beerpage">BEERS</li></Link>
+                    <Link to={"/punk-api-project/"}><li className="navigationBar__Homepage">HOME</li></Link>
 
                 </ul>
             </nav>

@@ -175,9 +175,9 @@ function App() {
         
         <Routes>
           
-          <Route path='/' element={<Home />} />
+          <Route path='/punk-api-project/' element={<Home />} />
 
-          <Route path='/beers' element={
+          <Route path='/punk-api-project/beers' element={
             <><section className='pagination'>
               <button className="pagination__decrement" aria-label="Navigate left" onClick={handleDecrement}><FaArrowLeft /></button>
               <h2 className='pagination__showPageNumber'>{"Page " + counter}</h2>
@@ -196,7 +196,7 @@ function App() {
               {backToTopButton && <button className="backToTop" aria-label="Back to Top" onClick={scrollUp}>BACK TO TOP</button>}
             </section></>} />
             
-            <Route path="/beers/:beerId" element={<BeerCardsInfo beers={checkBeers} />} />
+            <Route path="/punk-api-project/beers/:beerId" element={<BeerCardsInfo beers={checkBeers} />} />
 
         </Routes>
       </BrowserRouter>
